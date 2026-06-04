@@ -1,0 +1,713 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/components/SeatArea/index.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.seat-area {
+  position: relative;
+  width: 100%;
+  height: 600rpx;
+  margin: 20rpx auto;
+}
+
+.table-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 160rpx;
+  background: -webkit-linear-gradient(315deg, #1a6b3c, #0d4f2b);
+  background: linear-gradient(135deg, #1a6b3c, #0d4f2b);
+  border-radius: 50%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 6rpx solid #f0c040;
+  -webkit-box-shadow: 0 0 30rpx rgba(240, 192, 64, 0.3);
+          box-shadow: 0 0 30rpx rgba(240, 192, 64, 0.3);
+  z-index: 1;
+}
+
+.table-center .table-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #f0c040;
+}
+
+.seat {
+  position: absolute;
+  width: 180rpx;
+  height: 130rpx;
+  border-radius: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.seat-top {
+  top: 10rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.seat-top-right {
+  top: 80rpx;
+  right: 20rpx;
+}
+
+.seat-bottom-right {
+  bottom: 100rpx;
+  right: 20rpx;
+}
+
+.seat-bottom {
+  bottom: 10rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.seat-bottom-left {
+  bottom: 100rpx;
+  left: 20rpx;
+}
+
+.seat-top-left {
+  top: 80rpx;
+  left: 20rpx;
+}
+
+.seat-empty {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2rpx dashed rgba(255, 255, 255, 0.3);
+}
+
+.seat-occupied {
+  background: rgba(26, 107, 60, 0.6);
+  border: 2rpx solid rgba(240, 192, 64, 0.5);
+}
+
+.seat-me {
+  background: rgba(41, 128, 185, 0.6);
+  border: 2rpx solid rgba(52, 152, 219, 0.8);
+  -webkit-box-shadow: 0 0 20rpx rgba(52, 152, 219, 0.3);
+          box-shadow: 0 0 20rpx rgba(52, 152, 219, 0.3);
+}
+
+.seat-clickable .seat-empty {
+  cursor: pointer;
+}
+
+.seat-number {
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4rpx;
+}
+
+.seat-empty-hint {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.seat-empty-hint .empty-icon {
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.seat-empty-hint .empty-text {
+  font-size: 18rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.seat-player {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.seat-player .player-avatar {
+  position: relative;
+  width: 50rpx;
+  height: 50rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.seat-player .player-avatar .host-badge {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  font-size: 20rpx;
+}
+
+.seat-player .player-avatar .me-badge {
+  position: absolute;
+  bottom: -10rpx;
+  left: -10rpx;
+  font-size: 18rpx;
+}
+
+.seat-player .player-name {
+  font-size: 20rpx;
+  color: #fff;
+  margin-top: 4rpx;
+}
+
+.seat-card-preview {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  gap: 2rpx;
+  margin-top: 4rpx;
+}
+
+.seat-card-preview .mini-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rpx 4rpx;
+  border-radius: 4rpx;
+  font-size: 16rpx;
+}
+
+.seat-card-preview .more-cards {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16rpx;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/components/HandCards/index.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.hand-cards {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16rpx;
+  padding: 16rpx 20rpx;
+  margin: 16rpx 0;
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.hand-cards-header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.hand-cards-header .hand-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #f0c040;
+}
+
+.hand-cards-header .hand-count {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.cards-scroll {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.cards-list {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 6rpx;
+  padding: 8rpx 0;
+}
+
+.card-item {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 72rpx;
+  height: 100rpx;
+  background: #ffffff;
+  border: 3rpx solid #333;
+  border-radius: 8rpx;
+  -webkit-box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+
+.card-item .card-value {
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.hand-cards-empty {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16rpx;
+  padding: 40rpx 20rpx;
+  margin: 16rpx 0;
+  text-align: center;
+  border: 1rpx dashed rgba(255, 255, 255, 0.15);
+}
+
+.hand-cards-empty .empty-title {
+  display: block;
+  font-size: 26rpx;
+  color: #f0c040;
+  margin-bottom: 8rpx;
+}
+
+.hand-cards-empty .empty-hint {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.4);
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/components/ActionButtons/index.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.action-buttons {
+  padding: 20rpx;
+}
+
+.action-label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12rpx;
+  padding-left: 4rpx;
+}
+
+.host-actions {
+  margin-bottom: 16rpx;
+}
+
+.player-actions {
+  margin-bottom: 16rpx;
+}
+
+.btn {
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 36rpx;
+  margin-bottom: 12rpx;
+  border: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background: -webkit-linear-gradient(315deg, #f0c040, #e67e22);
+  background: linear-gradient(135deg, #f0c040, #e67e22);
+  color: #1a1a2e;
+}
+
+.btn-danger {
+  background: -webkit-linear-gradient(315deg, #e74c3c, #c0392b);
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+}
+
+.btn-transfer {
+  background: -webkit-linear-gradient(315deg, #9b59b6, #8e44ad);
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2rpx solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.btn-sm {
+  width: auto;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 24rpx;
+  font-size: 24rpx;
+  display: inline-block;
+  margin-right: 10rpx;
+  margin-bottom: 8rpx;
+}
+
+.transfer-group {
+  margin-bottom: 8rpx;
+}
+
+.transfer-group .group-label {
+  display: block;
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8rpx;
+}
+
+.transfer-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.seat-change-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.no-actions {
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.no-actions .no-actions-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.exit-section {
+  margin-top: 10rpx;
+}
+
+.exit-section .exit-divider {
+  height: 1rpx;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 16rpx;
+}
+
+.btn-exit {
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 36rpx;
+  border: none;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12rpx;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/components/CardRevealPopup/index.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.card-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 99999;
+  -webkit-animation: fadeIn 0.2s ease;
+          animation: fadeIn 0.2s ease;
+}
+
+.card-popup {
+  background: -webkit-gradient(linear, left top, left bottom, from(#1a1a2e), to(#16213e));
+  background: -webkit-linear-gradient(top, #1a1a2e, #16213e);
+  background: linear-gradient(180deg, #1a1a2e, #16213e);
+  border-radius: 24rpx;
+  padding: 50rpx 60rpx;
+  text-align: center;
+  border: 2rpx solid rgba(240, 192, 64, 0.4);
+  min-width: 400rpx;
+}
+
+.popup-title {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.popup-card-display {
+  width: 160rpx;
+  height: 220rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 0 auto 20rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 4rpx solid #f0c040;
+  -webkit-box-shadow: 0 0 40rpx rgba(240, 192, 64, 0.3);
+          box-shadow: 0 0 40rpx rgba(240, 192, 64, 0.3);
+  -webkit-animation: scaleIn 0.3s ease;
+          animation: scaleIn 0.3s ease;
+}
+
+.popup-card-value {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.popup-card-meaning {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin-bottom: 16rpx;
+  padding: 8rpx 24rpx;
+  background: rgba(255, 107, 107, 0.12);
+  border-radius: 30rpx;
+  display: inline-block;
+}
+
+.popup-receiver {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f0c040;
+  margin-bottom: 6rpx;
+}
+
+.popup-seat {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 30rpx;
+}
+
+.popup-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30rpx;
+  padding: 16rpx 50rpx;
+  display: inline-block;
+}
+
+.popup-close-text {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes scaleIn {
+  from {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/pages/room/index.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.room-page {
+  min-height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#1a1a2e), color-stop(40%, #16213e), to(#0f3460));
+  background: -webkit-linear-gradient(top, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  padding-bottom: 40rpx;
+}
+
+.room-header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 24rpx 30rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.08);
+}
+
+.room-info .room-code-label {
+  display: block;
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.room-info .room-code {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #f0c040;
+  letter-spacing: 6rpx;
+  font-family: monospace;
+}
+
+.room-stats {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16rpx;
+}
+
+.room-stats .stat-item {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6rpx 14rpx;
+  border-radius: 20rpx;
+}
+
+.host-info .host-badge-text {
+  font-size: 24rpx;
+  color: #f0c040;
+}
+
+.host-info .normal-text {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.room-footer {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.room-footer .footer-text {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.loading {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+.loading .loading-text {
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.error-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+.error-box .error-text {
+  font-size: 30rpx;
+  color: #e74c3c;
+}

@@ -1,0 +1,122 @@
+// ============================================
+// 操作按钮样式
+// ============================================
+.action-buttons {
+  padding: 20rpx;
+}
+
+.action-label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12rpx;
+  padding-left: 4rpx;
+}
+
+.host-actions {
+  margin-bottom: 16rpx;
+}
+
+.player-actions {
+  margin-bottom: 16rpx;
+}
+
+// 通用按钮
+.btn {
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 36rpx;
+  margin-bottom: 12rpx;
+  border: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f0c040, #e67e22);
+  color: #1a1a2e;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+}
+
+.btn-transfer {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2rpx solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.btn-sm {
+  width: auto;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 24rpx;
+  font-size: 24rpx;
+  display: inline-block;
+  margin-right: 10rpx;
+  margin-bottom: 8rpx;
+}
+
+.transfer-group {
+  margin-bottom: 8rpx;
+
+  .group-label {
+    display: block;
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 8rpx;
+  }
+}
+
+.transfer-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.seat-change-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.no-actions {
+  text-align: center;
+  padding: 30rpx 0;
+
+  .no-actions-text {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.35);
+  }
+}
+
+// 退出按钮
+.exit-section {
+  margin-top: 10rpx;
+
+  .exit-divider {
+    height: 1rpx;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 16rpx;
+  }
+}
+
+.btn-exit {
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 36rpx;
+  border: none;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12rpx;
+}

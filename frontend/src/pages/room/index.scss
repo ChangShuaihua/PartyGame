@@ -1,0 +1,95 @@
+// ============================================
+// 房间对局页样式
+// ============================================
+.room-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  padding-bottom: 40rpx;
+}
+
+// 顶部信息栏
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 30rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.08);
+}
+
+.room-info {
+  .room-code-label {
+    display: block;
+    font-size: 20rpx;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .room-code {
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #f0c040;
+    letter-spacing: 6rpx;
+    font-family: monospace;
+  }
+}
+
+.room-stats {
+  display: flex;
+  gap: 16rpx;
+
+  .stat-item {
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6rpx 14rpx;
+    border-radius: 20rpx;
+  }
+}
+
+.host-info {
+  .host-badge-text {
+    font-size: 24rpx;
+    color: #f0c040;
+  }
+
+  .normal-text {
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+// 底部信息
+.room-footer {
+  text-align: center;
+  padding: 20rpx 0;
+
+  .footer-text {
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+// 加载/错误状态
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .loading-text {
+    font-size: 30rpx;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.error-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .error-text {
+    font-size: 30rpx;
+    color: #e74c3c;
+  }
+}
