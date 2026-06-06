@@ -17,8 +17,11 @@ D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\entity\ScoreLog.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\dto\ScoreTransferDTO.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\dto\Result.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\mapper\ScoreLogMapper.java
+D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\dto\CozeChatDTO.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\dto\ChangeSeatDTO.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\config\WebSocketConfig.java
+D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\service\CozeService.java
+D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\controller\CozeController.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\PokerApplication.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\controller\RoomController.java
 D:\shuzimali\AICoding\test4\backend\src\main\java\com\poker\controller\ScoreController.java

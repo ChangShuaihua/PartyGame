@@ -19,6 +19,11 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
 
+# Coze 智能体配置
+coze:
+  bot-id: 7648188401422106670
+  api-token: pat_nuYvuEoi90crZ5LJayaB7JidstzBDJ8eaZ9VnRxwTbBByCMlFji5UVYY8SKIAtCt
+
 # 日志
 logging:
   level:

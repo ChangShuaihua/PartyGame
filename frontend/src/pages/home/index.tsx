@@ -22,6 +22,22 @@ const MODULES = [
     available: true,
   },
   {
+    id: 'daily',
+    icon: '📅',
+    title: '日历天气',
+    desc: '今日日历，实时天气',
+    color: '#3498db',
+    available: true,
+  },
+  {
+    id: 'companion',
+    icon: '💕',
+    title: '小花',
+    desc: '你的情感陪伴小助手',
+    color: '#e74c3c',
+    available: true,
+  },
+  {
     id: 'dice',
     icon: '🎲',
     title: '摇骰子',
@@ -54,6 +70,12 @@ export default function HomePage() {
         break;
       case 'score':
         Taro.navigateTo({ url: '/pages/score/index' });
+        break;
+      case 'daily':
+        Taro.navigateTo({ url: '/pages/daily/index' });
+        break;
+      case 'companion':
+        Taro.navigateTo({ url: '/pages/companion/index' });
         break;
       default:
         break;

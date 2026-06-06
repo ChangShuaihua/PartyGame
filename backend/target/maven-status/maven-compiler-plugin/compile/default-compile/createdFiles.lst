@@ -2,6 +2,7 @@ com\poker\dto\ScoreTransferDTO.class
 com\poker\dto\TransferHostDTO.class
 com\poker\config\CorsConfig.class
 com\poker\dto\DealCardDTO.class
+com\poker\dto\CozeChatDTO.class
 com\poker\service\PokerService.class
 com\poker\dto\RoomVO$ScoreLogVO.class
 com\poker\dto\JoinRoomDTO.class
@@ -11,14 +12,17 @@ com\poker\dto\ExitRoomDTO.class
 com\poker\PokerApplication.class
 com\poker\controller\ScoreController.class
 com\poker\dto\Result.class
+com\poker\controller\CozeController.class
 com\poker\entity\ScoreLog.class
 com\poker\dto\ChangeSeatDTO.class
+com\poker\service\CozeService.class
 com\poker\mapper\PokerPoolMapper.class
 com\poker\mapper\UserHandMapper.class
 com\poker\dto\WsMessage.class
 com\poker\mapper\UserScoreMapper.class
 com\poker\websocket\WebSocketSessionManager.class
 com\poker\config\GlobalExceptionHandler.class
+com\poker\service\CozeService$1.class
 com\poker\dto\ResetDTO.class
 com\poker\dto\RoomVO$DealInfo.class
 com\poker\controller\PokerController.class

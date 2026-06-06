@@ -1,0 +1,86 @@
+// ============================================
+// 天气组件
+// ============================================
+.weather {
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(46, 204, 113, 0.1));
+  border-radius: 24rpx;
+  border: 1rpx solid rgba(52, 152, 219, 0.2);
+  padding: 30rpx;
+  margin: 20rpx 30rpx;
+}
+
+.weather-loading,
+.weather-error {
+  display: block;
+  text-align: center;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 20rpx 0;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.weather-icon {
+  font-size: 72rpx;
+  margin-right: 20rpx;
+}
+
+.weather-temp-wrap {
+  display: flex;
+  align-items: flex-start;
+
+  .weather-temp {
+    font-size: 80rpx;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+  }
+  .weather-unit {
+    font-size: 28rpx;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10rpx;
+    margin-left: 4rpx;
+  }
+}
+
+.weather-info {
+  margin-bottom: 20rpx;
+
+  .weather-desc {
+    display: block;
+    font-size: 30rpx;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 6rpx;
+  }
+  .weather-city {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+.weather-detail {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.08);
+}
+
+.weather-detail-item {
+  text-align: center;
+
+  .detail-label {
+    display: block;
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 6rpx;
+  }
+  .detail-value {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

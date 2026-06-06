@@ -82,3 +82,8 @@ export function transferScore(roomId: number, fromUserId: string, toUserId: stri
 export function resetRound(roomId: number, userId: string) {
   return request<RoomVO>('/api/score/reset-round', 'POST', { roomId, userId });
 }
+
+/** 发消息给 Coze 智能体 */
+export function cozeChat(userId: string, message: string, conversationId?: string) {
+  return request<{ reply: string; conversationId?: string; error?: string }>('/api/coze/chat', 'POST', { userId, message, conversationId });
+}

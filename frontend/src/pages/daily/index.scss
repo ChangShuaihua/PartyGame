@@ -1,0 +1,24 @@
+// ============================================
+// 日历天气页
+// ============================================
+.daily-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding-bottom: 40rpx;
+}
+
+.daily-header {
+  padding: 40rpx 30rpx 10rpx;
+
+  .daily-title {
+    display: block;
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 8rpx;
+  }
+  .daily-date {
+    font-size: 26rpx;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
