@@ -1,6 +1,6 @@
-# 🎮 小华华的酒桌小游戏
+# 🎮 小华华的娱乐小游戏
 
-微信小程序酒桌娱乐合集 —— 模块化架构，支持多种小游戏。
+微信小程序娱乐合集 —— 模块化架构，支持多种小游戏和生活工具。
 
 ## 技术栈
 
@@ -10,13 +10,16 @@
 | 后端 | SpringBoot 2.7 + Java 11 + MyBatis-Plus |
 | 数据库 | MySQL 8.0 |
 | 通信 | REST API + WebSocket 实时推送 |
+| AI | Coze 智能体 API |
 
 ## 娱乐模块
 
 | 模块 | 说明 | 状态 |
 |------|------|------|
 | 🃏 扑克发牌 | 房间制逐张发牌，房主管理 | ✅ |
-| 📊 计分器 | 无房主，送分计分，负分制 | ✅ |
+| 📊 计分器 | 无房主，送分计分，负分制，送分日志，本轮汇总 | ✅ |
+| 📅 日历天气 | 当月日历 + 实时天气（wttr.in API） | ✅ |
+| 💕 小陪 | AI 情感陪伴，连接 Coze 智能体 | ✅ |
 | 🎲 摇骰子 | 更多游戏 | 🔜 |
 
 ## 项目架构
@@ -46,16 +49,19 @@ test4/
 │       │   │   ├── RoomVO.java           # 房间视图（含座位、手牌、分数、日志）
 │       │   │   ├── CreateRoomDTO.java    # 创建房间（支持 roomType、nickname）
 │       │   │   ├── ScoreTransferDTO.java # 送分请求
-│       │   │   └── ResetRoundDTO.java    # 本轮结束请求
+│       │   │   ├── ResetRoundDTO.java    # 本轮结束请求
+│       │   │   └── CozeChatDTO.java      # Coze 聊天请求
 │       │   ├── service/
 │       │   │   ├── RoomService.java      # 房间业务（通用，支持多模块）
 │       │   │   ├── PokerService.java     # 扑克发牌业务
 │       │   │   ├── ScoreService.java     # 计分器业务（送分/日志/重置）
+│       │   │   ├── CozeService.java      # Coze 智能体服务
 │       │   │   └── WebSocketService.java # WebSocket 广播
 │       │   ├── controller/
 │       │   │   ├── RoomController.java   # 房间 REST API（通用）
 │       │   │   ├── PokerController.java  # 扑克 REST API
-│       │   │   └── ScoreController.java  # 计分器 REST API
+│       │   │   ├── ScoreController.java  # 计分器 REST API
+│       │   │   └── CozeController.java   # Coze 智能体 REST API
 │       │   └── websocket/
 │       │       ├── PokerWebSocketHandler.java
 │       │       └── WebSocketSessionManager.java
@@ -82,15 +88,21 @@ test4/
         │   ├── CardRevealPopup/          # 发牌弹窗（扑克模块）
         │   ├── ScoreBoard/               # 计分板（计分器模块）
         │   ├── ScoreTransfer/            # 送分操作（计分器模块）
-        │   └── ScoreSummary/             # 本轮汇总弹窗（计分器模块）
+        │   ├── ScoreSummary/             # 本轮汇总弹窗（计分器模块）
+        │   ├── Calendar/                 # 日历组件（日历天气模块）
+        │   └── Weather/                  # 天气组件（日历天气模块）
         └── pages/
             ├── home/                     # 首页 - 娱乐模块入口
             ├── poker/                    # 扑克模块
             │   ├── index/                #   创建/加入房间
             │   └── room/                 #   游戏房间
-            └── score/                    # 计分器模块
-                ├── index/                #   创建/加入房间
-                └── room/                 #   计分房间
+            ├── score/                    # 计分器模块
+            │   ├── index/                #   创建/加入房间
+            │   └── room/                 #   计分房间
+            ├── daily/                    # 日历天气模块
+            │   └── index/                #   日历 + 天气展示
+            └── companion/                # AI 情感陪伴模块
+                └── index/                #   小花 - 对话界面
 ```
 
 ## 数据库设计
@@ -114,7 +126,7 @@ test4/
 | POST | `/api/room/join` | 加入房间 |
 | POST | `/api/room/change-seat` | 换座 |
 | POST | `/api/room/transfer-host` | 转让房主 |
-| POST | `/api/room/exit` | 退出房间（自动清理所有数据） |
+| POST | `/api/room/exit` | 退出房间（自动清理所有关联数据） |
 | GET | `/api/room/detail` | 房间详情 |
 | GET | `/api/room/detail-by-code` | 按房间号查询 |
 | GET | `/api/room/my-room` | 查询用户所在房间 |
@@ -132,6 +144,12 @@ test4/
 |------|------|------|
 | POST | `/api/score/transfer` | 送分（自己减分，对方加分，允许负分） |
 | POST | `/api/score/reset-round` | 本轮结束（分数归零，清空日志） |
+
+### Coze 智能体
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| POST | `/api/coze/chat` | 发送消息给 AI 智能体，支持多轮对话 |
 
 ### WebSocket
 
@@ -162,6 +180,20 @@ npm install
 npm run dev:weapp
 ```
 使用微信开发者工具打开 `frontend/` 目录
+
+## 模块说明
+
+### 🃏 扑克发牌
+房间制扑克发牌游戏。房主创建房间，玩家加入后轮流发牌，支持换座、转让房主、重置。
+
+### 📊 计分器
+无房主的计分工具。每人初始 0 分，可以给其他玩家送分（允许负分）。支持送分日志查看和本轮结束汇总（分数排名 + 记录）。
+
+### 📅 日历天气
+生活工具模块。显示当月日历（可翻月，今天高亮），自动定位获取实时天气（温度、体感、湿度、风速）。
+
+### 💕 小陪（AI 情感陪伴）
+连接 Coze 智能体的 AI 对话伙伴。可爱的小人形象，支持多轮对话，根据回复内容变化表情。
 
 ## 模块扩展指南
 
