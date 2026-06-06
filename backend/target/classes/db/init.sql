@@ -17,6 +17,7 @@ CREATE TABLE `room` (
     `status`            TINYINT         NOT NULL DEFAULT 0      COMMENT '房间状态：0=等待中，1=发牌中',
     `current_seat_index` INT            NOT NULL DEFAULT 1      COMMENT '当前发牌座位指针(1-6)，指向下一个待发牌座位',
     `max_seats`         INT             NOT NULL DEFAULT 6      COMMENT '最大座位数',
+    `room_type`         VARCHAR(20)     NOT NULL DEFAULT 'POKER' COMMENT '房间类型：POKER=扑克, SCORE=计分器',
     `created_at`        DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),
@@ -31,6 +32,7 @@ CREATE TABLE `room_user` (
     `id`            BIGINT          NOT NULL AUTO_INCREMENT  COMMENT '主键ID',
     `room_id`       BIGINT          NOT NULL                COMMENT '房间ID',
     `user_id`       VARCHAR(64)     NOT NULL                COMMENT '用户ID（微信openid）',
+    `nickname`      VARCHAR(64)     NOT NULL DEFAULT ''      COMMENT '玩家昵称',
     `seat_number`   INT             NOT NULL                COMMENT '座位号 1-6',
     `joined_at`     DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '加入时间',
     PRIMARY KEY (`id`),
@@ -69,3 +71,34 @@ CREATE TABLE `user_hand` (
     PRIMARY KEY (`id`),
     KEY `idx_room_user` (`room_id`, `user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='玩家手牌表';
+
+-- -----------------------------------------
+-- 5. 玩家分数表 user_score（计分器模块）
+-- -----------------------------------------
+DROP TABLE IF EXISTS `user_score`;
+CREATE TABLE `user_score` (
+    `id`            BIGINT          NOT NULL AUTO_INCREMENT  COMMENT '主键ID',
+    `room_id`       BIGINT          NOT NULL                COMMENT '房间ID',
+    `user_id`       VARCHAR(64)     NOT NULL                COMMENT '用户ID',
+    `score`         INT             NOT NULL DEFAULT 0      COMMENT '当前分数',
+    `updated_at`    DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_room_user` (`room_id`, `user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='玩家分数表';
+
+-- -----------------------------------------
+-- 6. 送分日志表 score_log（计分器模块）
+-- -----------------------------------------
+DROP TABLE IF EXISTS `score_log`;
+CREATE TABLE `score_log` (
+    `id`                BIGINT          NOT NULL AUTO_INCREMENT  COMMENT '主键ID',
+    `room_id`           BIGINT          NOT NULL                COMMENT '房间ID',
+    `from_user_id`      VARCHAR(64)     NOT NULL                COMMENT '送分用户ID',
+    `from_nickname`     VARCHAR(64)     NOT NULL DEFAULT ''      COMMENT '送分用户昵称',
+    `to_user_id`        VARCHAR(64)     NOT NULL                COMMENT '收分用户ID',
+    `to_nickname`       VARCHAR(64)     NOT NULL DEFAULT ''      COMMENT '收分用户昵称',
+    `amount`            INT             NOT NULL                COMMENT '送分数量',
+    `created_at`        DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '送分时间',
+    PRIMARY KEY (`id`),
+    KEY `idx_room_id` (`room_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='送分日志表';

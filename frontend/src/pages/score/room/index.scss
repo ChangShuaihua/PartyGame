@@ -1,0 +1,175 @@
+// ============================================
+// 计分器房间页
+// ============================================
+.score-room-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  padding-bottom: 40rpx;
+}
+
+// 顶部信息栏
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 30rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.08);
+}
+
+.room-info {
+  .room-code-label {
+    display: block;
+    font-size: 20rpx;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .room-code {
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #2ecc71;
+    letter-spacing: 6rpx;
+    font-family: monospace;
+  }
+}
+
+.room-stats {
+  display: flex;
+  gap: 16rpx;
+
+  .stat-item {
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6rpx 14rpx;
+    border-radius: 20rpx;
+  }
+}
+
+// 送分日志区
+.log-section {
+  margin: 20rpx 30rpx;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 24rpx;
+
+  .log-title {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .log-toggle {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.log-list {
+  padding: 0 24rpx 16rpx;
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.log-empty {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 10rpx 0;
+}
+
+.log-item {
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.04);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .log-text {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .log-from {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .log-arrow {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .log-to {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .log-amount {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+}
+
+// 操作按钮区
+.actions-section {
+  margin: 30rpx 30rpx 0;
+  display: flex;
+  gap: 16rpx;
+}
+
+.btn-end-round {
+  flex: 1;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0c040, #e67e22);
+  border-radius: 40rpx;
+
+  .btn-end-round-text {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #1a1a2e;
+  }
+}
+
+.btn-exit {
+  width: 200rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  border-radius: 40rpx;
+
+  .btn-exit-text {
+    font-size: 26rpx;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+// 加载/错误状态
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .loading-text {
+    font-size: 30rpx;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.error-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .error-text {
+    font-size: 30rpx;
+    color: #e74c3c;
+  }
+}

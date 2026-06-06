@@ -1,0 +1,131 @@
+// ============================================
+// 本轮结束汇总弹窗
+// ============================================
+.score-summary-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.score-summary {
+  width: 85%;
+  max-height: 80vh;
+  background: linear-gradient(180deg, #1a1a2e, #16213e);
+  border-radius: 24rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  padding: 40rpx 30rpx;
+  overflow-y: auto;
+  animation: scaleIn 0.3s ease;
+}
+
+.summary-title {
+  display: block;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f0c040;
+  margin-bottom: 30rpx;
+}
+
+.summary-section {
+  margin-bottom: 24rpx;
+}
+
+.summary-section-title {
+  display: block;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12rpx;
+  padding-bottom: 8rpx;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-rank-item {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 0;
+
+  .summary-medal {
+    width: 56rpx;
+    font-size: 32rpx;
+    text-align: center;
+  }
+  .summary-name {
+    flex: 1;
+    font-size: 30rpx;
+    color: #fff;
+    margin-left: 8rpx;
+  }
+  .summary-score {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    &.positive { color: #2ecc71; }
+    &.negative { color: #e74c3c; }
+  }
+}
+
+.summary-log-item {
+  padding: 8rpx 0;
+  .summary-log-text {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.summary-actions {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.btn-confirm-reset {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0c040, #e67e22);
+  border-radius: 40rpx;
+
+  .btn-confirm-reset-text {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #1a1a2e;
+  }
+}
+
+.btn-close {
+  width: 100%;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 36rpx;
+
+  .btn-close-text {
+    font-size: 28rpx;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}

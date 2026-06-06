@@ -30,6 +30,9 @@ public class Room {
     /** 最大座位数，默认6 */
     private Integer maxSeats;
 
+    /** 房间类型：POKER=扑克, SCORE=计分器 */
+    private String roomType;
+
     /** 创建时间（由数据库 DEFAULT CURRENT_TIMESTAMP 自动填充） */
     @TableField(insertStrategy = FieldStrategy.NEVER, updateStrategy = FieldStrategy.NEVER)
     private LocalDateTime createdAt;

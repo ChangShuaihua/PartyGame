@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro';
 import { ApiResult, RoomVO } from '../types';
 
-const BASE_URL = 'http://192.168.20.16:8080';
+const BASE_URL = 'http://192.168.21.33:8080';
 
 async function request<T>(url: string, method: 'GET' | 'POST', data?: any): Promise<ApiResult<T>> {
   try {
@@ -19,8 +19,8 @@ async function request<T>(url: string, method: 'GET' | 'POST', data?: any): Prom
 }
 
 /** 创建房间（maxSeats: 2-10） */
-export function createRoom(userId: string, maxSeats: number = 6) {
-  return request<RoomVO>('/api/room/create', 'POST', { userId, maxSeats });
+export function createRoom(userId: string, maxSeats: number = 6, nickname?: string) {
+  return request<RoomVO>('/api/room/create', 'POST', { userId, maxSeats, nickname });
 }
 
 /** 加入房间（nickname 必填） */
@@ -66,4 +66,19 @@ export function dealOneCard(roomId: number, hostUserId: string) {
 /** 一键重置 */
 export function resetGame(roomId: number, hostUserId: string) {
   return request<RoomVO>('/api/poker/reset', 'POST', { roomId, hostUserId });
+}
+
+/** 创建计分器房间 */
+export function createScoreRoom(userId: string, maxSeats: number = 6, nickname?: string) {
+  return request<RoomVO>('/api/room/create', 'POST', { userId, maxSeats, roomType: 'SCORE', nickname });
+}
+
+/** 送分 */
+export function transferScore(roomId: number, fromUserId: string, toUserId: string, amount: number) {
+  return request<RoomVO>('/api/score/transfer', 'POST', { roomId, fromUserId, toUserId, amount });
+}
+
+/** 本轮结束（分数归零，清空日志） */
+export function resetRound(roomId: number, userId: string) {
+  return request<RoomVO>('/api/score/reset-round', 'POST', { roomId, userId });
 }

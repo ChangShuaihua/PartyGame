@@ -23,17 +23,23 @@ public class RoomService {
     private final RoomUserMapper roomUserMapper;
     private final UserHandMapper userHandMapper;
     private final PokerPoolMapper pokerPoolMapper;
+    private final UserScoreMapper userScoreMapper;
+    private final ScoreLogMapper scoreLogMapper;
     private final WebSocketService webSocketService;
 
     public RoomService(RoomMapper roomMapper,
                        RoomUserMapper roomUserMapper,
                        UserHandMapper userHandMapper,
                        PokerPoolMapper pokerPoolMapper,
+                       UserScoreMapper userScoreMapper,
+                       ScoreLogMapper scoreLogMapper,
                        WebSocketService webSocketService) {
         this.roomMapper = roomMapper;
         this.roomUserMapper = roomUserMapper;
         this.userHandMapper = userHandMapper;
         this.pokerPoolMapper = pokerPoolMapper;
+        this.userScoreMapper = userScoreMapper;
+        this.scoreLogMapper = scoreLogMapper;
         this.webSocketService = webSocketService;
     }
 
@@ -51,16 +57,27 @@ public class RoomService {
         room.setStatus(0);
         room.setCurrentSeatIndex(1);
         room.setMaxSeats(maxSeats);
+        room.setRoomType(dto.getRoomType() != null ? dto.getRoomType() : "POKER");
         roomMapper.insert(room);
 
         // 房主自动落座1号位
         RoomUser hostUser = new RoomUser();
         hostUser.setRoomId(room.getId());
         hostUser.setUserId(dto.getUserId());
+        hostUser.setNickname(dto.getNickname() != null ? dto.getNickname() : "");
         hostUser.setSeatNumber(1);
         roomUserMapper.insert(hostUser);
 
-        log.info("房间创建: roomId={}, roomCode={}, host={}, maxSeats={}", room.getId(), roomCode, dto.getUserId(), maxSeats);
+        // 计分器房间：初始化房主分数为0
+        if ("SCORE".equals(room.getRoomType())) {
+            UserScore hostScore = new UserScore();
+            hostScore.setRoomId(room.getId());
+            hostScore.setUserId(dto.getUserId());
+            hostScore.setScore(0);
+            userScoreMapper.insert(hostScore);
+        }
+
+        log.info("房间创建: roomId={}, roomCode={}, host={}, maxSeats={}, type={}", room.getId(), roomCode, dto.getUserId(), maxSeats, room.getRoomType());
         return buildRoomVO(room);
     }
 
@@ -95,6 +112,15 @@ public class RoomService {
         newUser.setNickname(dto.getNickname() != null ? dto.getNickname() : "玩家");
         newUser.setSeatNumber(dto.getSeatNumber());
         roomUserMapper.insert(newUser);
+
+        // 计分器房间：初始化分数为0
+        if ("SCORE".equals(room.getRoomType())) {
+            UserScore userScore = new UserScore();
+            userScore.setRoomId(room.getId());
+            userScore.setUserId(dto.getUserId());
+            userScore.setScore(0);
+            userScoreMapper.insert(userScore);
+        }
 
         log.info("玩家加入: roomId={}, nickname={}, seat={}", room.getId(), dto.getNickname(), dto.getSeatNumber());
 
@@ -194,6 +220,11 @@ public class RoomService {
                 .eq(UserHand::getRoomId, dto.getRoomId())
                 .eq(UserHand::getUserId, dto.getUserId()));
 
+        // 1b. 删除分数记录
+        userScoreMapper.delete(new LambdaQueryWrapper<UserScore>()
+                .eq(UserScore::getRoomId, dto.getRoomId())
+                .eq(UserScore::getUserId, dto.getUserId()));
+
         // 2. 删除座位记录
         roomUserMapper.deleteById(leavingUser.getId());
 
@@ -207,6 +238,10 @@ public class RoomService {
                     .eq(UserHand::getRoomId, dto.getRoomId()));
             pokerPoolMapper.delete(new LambdaQueryWrapper<PokerPool>()
                     .eq(PokerPool::getRoomId, dto.getRoomId()));
+            userScoreMapper.delete(new LambdaQueryWrapper<UserScore>()
+                    .eq(UserScore::getRoomId, dto.getRoomId()));
+            scoreLogMapper.delete(new LambdaQueryWrapper<ScoreLog>()
+                    .eq(ScoreLog::getRoomId, dto.getRoomId()));
             roomUserMapper.delete(new LambdaQueryWrapper<RoomUser>()
                     .eq(RoomUser::getRoomId, dto.getRoomId()));
             roomMapper.deleteById(dto.getRoomId());
@@ -280,6 +315,7 @@ public class RoomService {
         vo.setStatus(room.getStatus());
         vo.setCurrentSeatIndex(room.getCurrentSeatIndex());
         vo.setMaxSeats(room.getMaxSeats());
+        vo.setRoomType(room.getRoomType());
         vo.setCreatedAt(room.getCreatedAt());
 
         List<RoomUser> roomUsers = roomUserMapper.selectList(
@@ -293,6 +329,15 @@ public class RoomService {
                         UserHand::getUserId,
                         Collectors.mapping(UserHand::getCardValue, Collectors.toList())));
 
+        // 计分器房间：查询所有用户分数
+        Map<String, Integer> userScoreMap = new HashMap<>();
+        if ("SCORE".equals(room.getRoomType())) {
+            List<UserScore> scores = userScoreMapper.selectList(
+                    new LambdaQueryWrapper<UserScore>().eq(UserScore::getRoomId, room.getId()));
+            userScoreMap = scores.stream()
+                    .collect(Collectors.toMap(UserScore::getUserId, UserScore::getScore));
+        }
+
         Map<Integer, RoomUser> seatUserMap = roomUsers.stream()
                 .collect(Collectors.toMap(RoomUser::getSeatNumber, u -> u));
 
@@ -305,14 +350,35 @@ public class RoomService {
                 seat.setUserId(user.getUserId());
                 seat.setNickname(user.getNickname() != null ? user.getNickname() : "");
                 seat.setCards(userCardMap.getOrDefault(user.getUserId(), Collections.emptyList()));
+                seat.setScore(userScoreMap.getOrDefault(user.getUserId(), 0));
             } else {
                 seat.setUserId(null);
                 seat.setNickname("");
                 seat.setCards(Collections.emptyList());
+                seat.setScore(null);
             }
             seats.add(seat);
         }
         vo.setSeats(seats);
+
+        // 计分器房间：填充送分日志
+        if ("SCORE".equals(room.getRoomType())) {
+            List<ScoreLog> logs = scoreLogMapper.selectList(
+                    new LambdaQueryWrapper<ScoreLog>()
+                            .eq(ScoreLog::getRoomId, room.getId())
+                            .orderByDesc(ScoreLog::getId));
+            List<RoomVO.ScoreLogVO> logVOs = new ArrayList<>();
+            for (ScoreLog logEntry : logs) {
+                RoomVO.ScoreLogVO logVO = new RoomVO.ScoreLogVO();
+                logVO.setId(logEntry.getId());
+                logVO.setFromNickname(logEntry.getFromNickname());
+                logVO.setToNickname(logEntry.getToNickname());
+                logVO.setAmount(logEntry.getAmount());
+                logVO.setCreatedAt(logEntry.getCreatedAt());
+                logVOs.add(logVO);
+            }
+            vo.setScoreLogs(logVOs);
+        }
 
         return vo;
     }

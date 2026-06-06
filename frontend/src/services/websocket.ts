@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro';
 import { WsMessage, RoomVO } from '../types';
 
 // WebSocket 服务器地址
-const WS_BASE_URL = 'ws://192.168.21.16:8080';
+const WS_BASE_URL = 'ws://192.168.21.33:8080';
 
 /** 连接超时时间（毫秒） */
 const CONNECT_TIMEOUT = 10_000;

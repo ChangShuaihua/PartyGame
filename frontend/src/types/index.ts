@@ -15,6 +15,16 @@ export interface SeatInfo {
   userId: string | null;
   nickname: string;       // 玩家昵称
   cards: string[];
+  score: number | null;   // 当前分数（计分器模块）
+}
+
+/** 送分日志 */
+export interface ScoreLog {
+  id: number;
+  fromNickname: string;
+  toNickname: string;
+  amount: number;
+  createdAt: string;
 }
 
 /** 房间详情 */
@@ -25,8 +35,10 @@ export interface RoomVO {
   status: number;
   currentSeatIndex: number;
   maxSeats: number;
+  roomType: string;           // POKER=扑克, SCORE=计分器
   seats: SeatInfo[];
   lastDeal: DealInfo | null;  // 最新发牌弹窗信息
+  scoreLogs: ScoreLog[];      // 送分日志（计分器模块）
   createdAt: string;
 }
 
@@ -54,4 +66,5 @@ export const WS_TYPE = {
   LEAVE_ROOM: 'LEAVE_ROOM',
   ROOM_DISMISSED: 'ROOM_DISMISSED',
   ROOM_UPDATE: 'ROOM_UPDATE',
+  SCORE_TRANSFER: 'SCORE_TRANSFER',
 } as const;

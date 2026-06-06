@@ -34,4 +34,5 @@ public class WsMessage {
     public static final String TYPE_LEAVE_ROOM     = "LEAVE_ROOM";      // 离开房间
     public static final String TYPE_ROOM_DISMISSED = "ROOM_DISMISSED";  // 房间已解散
     public static final String TYPE_ROOM_UPDATE    = "ROOM_UPDATE";     // 房间全量刷新
+    public static final String TYPE_SCORE_TRANSFER = "SCORE_TRANSFER";  // 送分
 }

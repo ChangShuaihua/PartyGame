@@ -1,1 +1,1 @@
-{"pages":["pages/index/index","pages/room/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#1a1a2e","navigationBarTitleText":"扑克发牌","navigationBarTextStyle":"white"}}
+{"pages":["pages/home/index","pages/poker/index","pages/poker/room/index","pages/score/index","pages/score/room/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#1a1a2e","navigationBarTitleText":"娱乐中心","navigationBarTextStyle":"white"}}

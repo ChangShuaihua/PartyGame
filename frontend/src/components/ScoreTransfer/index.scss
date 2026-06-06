@@ -1,0 +1,153 @@
+// ============================================
+// 送分操作组件
+// ============================================
+.score-transfer {
+  margin: 20rpx 30rpx;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  padding: 24rpx;
+}
+
+.score-transfer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+
+  .score-transfer-title {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .score-transfer-my {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .my-score-num {
+    color: #2ecc71;
+    font-weight: bold;
+    font-size: 28rpx;
+  }
+}
+
+.transfer-section {
+  margin-bottom: 20rpx;
+}
+
+.transfer-label {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12rpx;
+}
+
+.player-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.player-chip {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx 20rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2rpx solid rgba(255, 255, 255, 0.1);
+  border-radius: 40rpx;
+  transition: all 0.2s;
+
+  &--selected {
+    background: rgba(46, 204, 113, 0.15);
+    border-color: rgba(46, 204, 113, 0.5);
+  }
+
+  .player-chip-name {
+    font-size: 26rpx;
+    color: #fff;
+  }
+  .player-chip-score {
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+.no-players {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.amount-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.amount-input {
+  flex: 1;
+  height: 72rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 36rpx;
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.input-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.quick-amounts {
+  display: flex;
+  gap: 10rpx;
+}
+
+.quick-amount {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2rpx solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &--active {
+    background: rgba(46, 204, 113, 0.2);
+    border-color: rgba(46, 204, 113, 0.5);
+  }
+
+  .quick-amount-text {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
+  }
+}
+
+.transfer-error {
+  display: block;
+  font-size: 22rpx;
+  color: #e74c3c;
+  margin-top: 8rpx;
+}
+
+.btn-transfer {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: #fff;
+  border-radius: 40rpx;
+  border: none;
+  margin-top: 10rpx;
+
+  &--disabled {
+    opacity: 0.5;
+  }
+}

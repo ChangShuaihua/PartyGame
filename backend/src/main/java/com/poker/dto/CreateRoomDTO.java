@@ -19,4 +19,10 @@ public class CreateRoomDTO {
     @Min(value = 2, message = "最少2人")
     @Max(value = 10, message = "最多10人")
     private Integer maxSeats;
+
+    /** 房间类型：POKER=扑克, SCORE=计分器，默认POKER */
+    private String roomType;
+
+    /** 创建者昵称 */
+    private String nickname;
 }

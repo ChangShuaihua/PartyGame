@@ -1,0 +1,977 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.18)
+
+2026-06-06 11:35:51.751  INFO 15244 --- [           main] com.poker.PokerApplication               : Starting PokerApplication v1.0.0 using Java 11.0.0.2 on DESKTOP-16SPCOK with PID 15244 (D:\shuzimali\AICoding\test4\backend\target\poker-game-1.0.0.jar started by 常帅华 in D:\shuzimali\AICoding\test4\backend)
+2026-06-06 11:35:51.754 DEBUG 15244 --- [           main] com.poker.PokerApplication               : Running with Spring Boot v2.7.18, Spring v5.3.31
+2026-06-06 11:35:51.754  INFO 15244 --- [           main] com.poker.PokerApplication               : No active profile set, falling back to 1 default profile: "default"
+2026-06-06 11:35:53.414  INFO 15244 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-06-06 11:35:53.424  INFO 15244 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-06 11:35:53.424  INFO 15244 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2026-06-06 11:35:53.490  INFO 15244 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-06 11:35:53.491  INFO 15244 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1684 ms
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+Property 'mapperLocations' was not specified.
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.3.1 
+2026-06-06 11:35:54.765  INFO 15244 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2026-06-06 11:35:54.775  INFO 15244 --- [           main] com.poker.PokerApplication               : Started PokerApplication in 3.48 seconds (JVM running for 3.847)
+====================================
+  扑克发牌游戏服务启动成功！
+  http://localhost:8080
+====================================
+2026-06-06 11:36:25.854  INFO 15244 --- [0.0-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-06 11:36:25.854  INFO 15244 --- [0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-06 11:36:25.855  INFO 15244 --- [0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-06 11:36:25.966  INFO 15244 --- [0.0-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-06 11:36:26.107  INFO 15244 --- [0.0-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.baomidou.mybatisplus.core.toolkit.SetAccessibleAction (jar:file:/D:/shuzimali/AICoding/test4/backend/target/poker-game-1.0.0.jar!/BOOT-INF/lib/mybatis-plus-core-3.5.3.1.jar!/) to field java.lang.invoke.SerializedLambda.capturingClass
+WARNING: Please consider reporting this to the maintainers of com.baomidou.mybatisplus.core.toolkit.SetAccessibleAction
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+JDBC Connection [HikariProxyConnection@1126650138 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT COUNT( * ) AS total FROM room WHERE (room_code = ?)
+==> Parameters: 144072(String)
+<==    Columns: total
+<==        Row: 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d] from current transaction
+==>  Preparing: INSERT INTO room ( room_code, host_user_id, status, current_seat_index, max_seats, room_type ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 144072(String), clean_test_1(String), 0(Integer), 1(Integer), 4(Integer), SCORE(String)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d] from current transaction
+==>  Preparing: INSERT INTO room_user ( room_id, user_id, nickname, seat_number ) VALUES ( ?, ?, ?, ? )
+==> Parameters: 55(Long), clean_test_1(String), Player1(String), 1(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d] from current transaction
+==>  Preparing: INSERT INTO user_score ( room_id, user_id, score ) VALUES ( ?, ?, ? )
+==> Parameters: 55(Long), clean_test_1(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+2026-06-06 11:36:26.226  INFO 15244 --- [0.0-8080-exec-1] com.poker.service.RoomService            : 房间创建: roomId=55, roomCode=144072, host=clean_test_1, maxSeats=4, type=SCORE
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 64, 55, clean_test_1, Player1, 1, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 32, 55, clean_test_1, 0, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 55(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298bc71d]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+JDBC Connection [HikariProxyConnection@767336303 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE (room_code = ?)
+==> Parameters: 144072(String)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 55, 144072, clean_test_1, 0, 1, 4, SCORE, 2026-06-06 11:36:26, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_2(String)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND seat_number = ?)
+==> Parameters: 55(Long), 2(Integer)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: INSERT INTO room_user ( room_id, user_id, nickname, seat_number ) VALUES ( ?, ?, ?, ? )
+==> Parameters: 55(Long), clean_test_2(String), Player2(String), 2(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: INSERT INTO user_score ( room_id, user_id, score ) VALUES ( ?, ?, ? )
+==> Parameters: 55(Long), clean_test_2(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+2026-06-06 11:36:26.536  INFO 15244 --- [0.0-8080-exec-2] com.poker.service.RoomService            : 玩家加入: roomId=55, nickname=Player2, seat=2
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 64, 55, clean_test_1, Player1, 1, 2026-06-06 11:36:26
+<==        Row: 65, 55, clean_test_2, Player2, 2, 2026-06-06 11:36:26
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 32, 55, clean_test_1, 0, 2026-06-06 11:36:26
+<==        Row: 33, 55, clean_test_2, 0, 2026-06-06 11:36:26
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 55(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+2026-06-06 11:36:26.546 DEBUG 15244 --- [0.0-8080-exec-2] com.poker.service.WebSocketService       : 房间 55 无在线用户，跳过广播
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6793c279]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+JDBC Connection [HikariProxyConnection@532401304 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 55(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 55, 144072, clean_test_1, 0, 1, 4, SCORE, 2026-06-06 11:36:26, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_1(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 64, 55, clean_test_1, Player1, 1, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_2(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 65, 55, clean_test_2, Player2, 2, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_1(String)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 32, 55, clean_test_1, 0, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 55(Long), clean_test_1(String), -3(Integer), 32(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_2(String)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 33, 55, clean_test_2, 0, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 55(Long), clean_test_2(String), 3(Integer), 33(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: INSERT INTO score_log ( room_id, from_user_id, from_nickname, to_user_id, to_nickname, amount ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 55(Long), clean_test_1(String), Player1(String), clean_test_2(String), Player2(String), 3(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+2026-06-06 11:36:26.615  INFO 15244 --- [0.0-8080-exec-4] com.poker.service.ScoreService           : 送分: roomId=55, Player1 -> Player2, amount=3
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 64, 55, clean_test_1, Player1, 1, 2026-06-06 11:36:26
+<==        Row: 65, 55, clean_test_2, Player2, 2, 2026-06-06 11:36:26
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 32, 55, clean_test_1, -3, 2026-06-06 11:36:26
+<==        Row: 33, 55, clean_test_2, 3, 2026-06-06 11:36:26
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, from_user_id, from_nickname, to_user_id, to_nickname, amount, created_at
+<==        Row: 5, 55, clean_test_1, Player1, clean_test_2, Player2, 3, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70] from current transaction
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+2026-06-06 11:36:26.622 DEBUG 15244 --- [0.0-8080-exec-4] com.poker.service.WebSocketService       : 房间 55 无在线用户，跳过广播
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61dc3b70]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+JDBC Connection [HikariProxyConnection@1052274237 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 55(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 55, 144072, clean_test_1, 0, 1, 4, SCORE, 2026-06-06 11:36:26, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_1(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 64, 55, clean_test_1, Player1, 1, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: DELETE FROM user_hand WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_1(String)
+<==    Updates: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: DELETE FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_1(String)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: DELETE FROM room_user WHERE id=?
+==> Parameters: 64(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 65, 55, clean_test_2, Player2, 2, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: UPDATE room SET room_code=?, host_user_id=?, status=?, current_seat_index=?, max_seats=?, room_type=? WHERE id=?
+==> Parameters: 144072(String), clean_test_2(String), 0(Integer), 1(Integer), 4(Integer), SCORE(String), 55(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+2026-06-06 11:36:26.677  INFO 15244 --- [0.0-8080-exec-6] com.poker.service.RoomService            : 房主退出自动转让: roomId=55, newHost=clean_test_2
+2026-06-06 11:36:26.677  INFO 15244 --- [0.0-8080-exec-6] com.poker.service.RoomService            : 玩家退出: roomId=55, userId=clean_test_1, 剩余1人
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 65, 55, clean_test_2, Player2, 2, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 33, 55, clean_test_2, 3, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 55(Long)
+<==    Columns: id, room_id, from_user_id, from_nickname, to_user_id, to_nickname, amount, created_at
+<==        Row: 5, 55, clean_test_1, Player1, clean_test_2, Player2, 3, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+2026-06-06 11:36:26.682 DEBUG 15244 --- [0.0-8080-exec-6] com.poker.service.WebSocketService       : 房间 55 无在线用户，跳过广播
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffde33b]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+JDBC Connection [HikariProxyConnection@1696745833 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 55(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 55, 144072, clean_test_2, 0, 1, 4, SCORE, 2026-06-06 11:36:26, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_2(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 65, 55, clean_test_2, Player2, 2, 2026-06-06 11:36:26
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM user_hand WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_2(String)
+<==    Updates: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 55(Long), clean_test_2(String)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM room_user WHERE id=?
+==> Parameters: 65(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM user_hand WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Updates: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM poker_pool WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Updates: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM user_score WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Updates: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM score_log WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM room_user WHERE (room_id = ?)
+==> Parameters: 55(Long)
+<==    Updates: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219] from current transaction
+==>  Preparing: DELETE FROM room WHERE id=?
+==> Parameters: 55(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+2026-06-06 11:36:26.753  INFO 15244 --- [0.0-8080-exec-3] com.poker.service.RoomService            : 房间解散: roomId=55, 所有玩家已退出
+2026-06-06 11:36:26.754 DEBUG 15244 --- [0.0-8080-exec-3] com.poker.service.WebSocketService       : 房间 55 无在线用户，跳过广播
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fda2219]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25701a29] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1639283168 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (user_id = ?)
+==> Parameters: user_mq1smvvb1go67m(String)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25701a29]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a93b208] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@395292398 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (user_id = ?)
+==> Parameters: user_mq1smvvb1go67m(String)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a93b208]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+JDBC Connection [HikariProxyConnection@165923844 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT COUNT( * ) AS total FROM room WHERE (room_code = ?)
+==> Parameters: 710408(String)
+<==    Columns: total
+<==        Row: 0
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04] from current transaction
+==>  Preparing: INSERT INTO room ( room_code, host_user_id, status, current_seat_index, max_seats, room_type ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 710408(String), user_mq1smvvb1go67m(String), 0(Integer), 1(Integer), 6(Integer), SCORE(String)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04] from current transaction
+==>  Preparing: INSERT INTO room_user ( room_id, user_id, nickname, seat_number ) VALUES ( ?, ?, ?, ? )
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String), 2(String), 1(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04] from current transaction
+==>  Preparing: INSERT INTO user_score ( room_id, user_id, score ) VALUES ( ?, ?, ? )
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+2026-06-06 11:38:04.415  INFO 15244 --- [0.0-8080-exec-2] com.poker.service.RoomService            : 房间创建: roomId=56, roomCode=710408, host=user_mq1smvvb1go67m, maxSeats=6, type=SCORE
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 34, 56, user_mq1smvvb1go67m, 0, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65a55d04]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5aa08a5f] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1587484115 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 56(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 56, 710408, user_mq1smvvb1go67m, 0, 1, 6, SCORE, 2026-06-06 11:38:04, 2026-06-06 11:38:04
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5aa08a5f]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@746067d2] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@709687667 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@746067d2]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41d12ee9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@392105687 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41d12ee9]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7eb6ae] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1703961486 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 34, 56, user_mq1smvvb1go67m, 0, 2026-06-06 11:38:04
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d7eb6ae]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16b7fcc7] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1311044473 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16b7fcc7]
+2026-06-06 11:38:04.772  INFO 15244 --- [0.0-8080-exec-4] c.p.websocket.WebSocketSessionManager    : WebSocket会话加入房间: roomId=56, sessionId=8d2ad9e1-9c4a-d602-270e-f9e06cdf6f14, 当前房间在线人数=1
+2026-06-06 11:38:04.772  INFO 15244 --- [0.0-8080-exec-4] c.poker.websocket.PokerWebSocketHandler  : WebSocket连接建立: roomId=56, userId=user_mq1smvvb1go67m, sessionId=8d2ad9e1-9c4a-d602-270e-f9e06cdf6f14
+2026-06-06 11:38:34.786 DEBUG 15244 --- [0.0-8080-exec-5] c.poker.websocket.PokerWebSocketHandler  : 收到WebSocket消息: {"type":"PING"}
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@205e4018] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1483104443 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (user_id = ?)
+==> Parameters: user_mpy0z2oj09f9xn(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 32, 32, user_mpy0z2oj09f9xn, , 1, 2026-06-06 10:24:35
+<==        Row: 33, 31, user_mpy0z2oj09f9xn, 2, 2, 2026-06-06 10:24:56
+<==        Row: 40, 37, user_mpy0z2oj09f9xn, , 1, 2026-06-06 10:42:48
+<==        Row: 42, 38, user_mpy0z2oj09f9xn, , 1, 2026-06-06 10:44:15
+<==        Row: 50, 44, user_mpy0z2oj09f9xn, bb, 2, 2026-06-06 10:59:26
+<==        Row: 56, 48, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:14:33
+<==      Total: 6
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@205e4018]
+2026-06-06 11:38:40.747 ERROR 15244 --- [0.0-8080-exec-6] com.poker.controller.RoomController      : 查询我的房间失败
+
+org.apache.ibatis.exceptions.TooManyResultsException: Expected one result (or null) to be returned by selectOne(), but found: 6
+	at com.baomidou.mybatisplus.core.mapper.BaseMapper.selectOne(BaseMapper.java:177) ~[mybatis-plus-core-3.5.3.1.jar!/:3.5.3.1]
+	at java.base/java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:710) ~[na:na]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$DefaultMethodInvoker.invoke(MybatisMapperProxy.java:162) ~[mybatis-plus-core-3.5.3.1.jar!/:3.5.3.1]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.3.1.jar!/:3.5.3.1]
+	at com.sun.proxy.$Proxy74.selectOne(Unknown Source) ~[na:na]
+	at com.poker.service.RoomService.getMyRoom(RoomService.java:293) ~[classes!/:1.0.0]
+	at com.poker.service.RoomService$$FastClassBySpringCGLIB$$c12cbdf.invoke(<generated>) ~[classes!/:1.0.0]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.31.jar!/:5.3.31]
+	at org.springframework.aop.framework.CglibAopProxy.invokeMethod(CglibAopProxy.java:386) ~[spring-aop-5.3.31.jar!/:5.3.31]
+	at org.springframework.aop.framework.CglibAopProxy.access$000(CglibAopProxy.java:85) ~[spring-aop-5.3.31.jar!/:5.3.31]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703) ~[spring-aop-5.3.31.jar!/:5.3.31]
+	at com.poker.service.RoomService$$EnhancerBySpringCGLIB$$d74516ba.getMyRoom(<generated>) ~[classes!/:1.0.0]
+	at com.poker.controller.RoomController.getMyRoom(RoomController.java:136) ~[classes!/:1.0.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.31.jar!/:5.3.31]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.31.jar!/:5.3.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.83.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41a30f72] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1167889310 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE (room_code = ?)
+==> Parameters: 710408(String)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 56, 710408, user_mq1smvvb1go67m, 0, 1, 6, SCORE, 2026-06-06 11:38:04, 2026-06-06 11:38:04
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41a30f72]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68553e3c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@827614427 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68553e3c]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60b1fa06] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@559189234 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60b1fa06]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b714ca4] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1694492166 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 34, 56, user_mq1smvvb1go67m, 0, 2026-06-06 11:38:04
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b714ca4]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a989775] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1163199804 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a989775]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+JDBC Connection [HikariProxyConnection@1847521783 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE (room_code = ?)
+==> Parameters: 710408(String)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 56, 710408, user_mq1smvvb1go67m, 0, 1, 6, SCORE, 2026-06-06 11:38:04, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND seat_number = ?)
+==> Parameters: 56(Long), 2(Integer)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: INSERT INTO room_user ( room_id, user_id, nickname, seat_number ) VALUES ( ?, ?, ?, ? )
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String), 好(String), 2(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: INSERT INTO user_score ( room_id, user_id, score ) VALUES ( ?, ?, ? )
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+2026-06-06 11:38:58.158  INFO 15244 --- [0.0-8080-exec-3] com.poker.service.RoomService            : 玩家加入: roomId=56, nickname=好, seat=2
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==        Row: 67, 56, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:38:58
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, 0, 2026-06-06 11:38:58
+<==        Row: 34, 56, user_mq1smvvb1go67m, 0, 2026-06-06 11:38:04
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+2026-06-06 11:38:58.289  INFO 15244 --- [0.0-8080-exec-3] com.poker.service.WebSocketService       : 广播消息 -> 房间56: type=JOIN_ROOM, 接收人数=1
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aa33df5]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76119e7] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@161933179 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 56(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 56, 710408, user_mq1smvvb1go67m, 0, 1, 6, SCORE, 2026-06-06 11:38:04, 2026-06-06 11:38:04
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76119e7]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@489bed40] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1195015061 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==        Row: 67, 56, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:38:58
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@489bed40]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f520948] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@682889743 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f520948]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@be14490] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@609617133 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, 0, 2026-06-06 11:38:58
+<==        Row: 34, 56, user_mq1smvvb1go67m, 0, 2026-06-06 11:38:04
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@be14490]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21a3d518] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@552059000 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will not be managed by Spring
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21a3d518]
+2026-06-06 11:38:58.366  INFO 15244 --- [.0-8080-exec-10] c.p.websocket.WebSocketSessionManager    : WebSocket会话加入房间: roomId=56, sessionId=b99413a0-326e-cc55-242f-0f334ec2cc25, 当前房间在线人数=2
+2026-06-06 11:38:58.366  INFO 15244 --- [.0-8080-exec-10] c.poker.websocket.PokerWebSocketHandler  : WebSocket连接建立: roomId=56, userId=user_mpy0z2oj09f9xn, sessionId=b99413a0-326e-cc55-242f-0f334ec2cc25
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+JDBC Connection [HikariProxyConnection@1236267370 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 56(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 56, 710408, user_mq1smvvb1go67m, 0, 1, 6, SCORE, 2026-06-06 11:38:04, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 67, 56, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:38:58
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, 0, 2026-06-06 11:38:58
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String), -1(Integer), 35(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 34, 56, user_mq1smvvb1go67m, 0, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String), 1(Integer), 34(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: INSERT INTO score_log ( room_id, from_user_id, from_nickname, to_user_id, to_nickname, amount ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String), 好(String), user_mq1smvvb1go67m(String), 2(String), 1(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+2026-06-06 11:39:03.424  INFO 15244 --- [0.0-8080-exec-1] com.poker.service.ScoreService           : 送分: roomId=56, 好 -> 2, amount=1
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==        Row: 67, 56, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:38:58
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, -1, 2026-06-06 11:39:03
+<==        Row: 34, 56, user_mq1smvvb1go67m, 1, 2026-06-06 11:39:03
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, from_user_id, from_nickname, to_user_id, to_nickname, amount, created_at
+<==        Row: 6, 56, user_mpy0z2oj09f9xn, 好, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:39:03
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244] from current transaction
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+2026-06-06 11:39:03.439  INFO 15244 --- [0.0-8080-exec-1] com.poker.service.WebSocketService       : 广播消息 -> 房间56: type=SCORE_TRANSFER, 接收人数=2
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4192244]
+2026-06-06 11:39:04.775 DEBUG 15244 --- [0.0-8080-exec-2] c.poker.websocket.PokerWebSocketHandler  : 收到WebSocket消息: {"type":"PING"}
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+JDBC Connection [HikariProxyConnection@112088386 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 56(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 56, 710408, user_mq1smvvb1go67m, 0, 1, 6, SCORE, 2026-06-06 11:38:04, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 67, 56, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:38:58
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, -1, 2026-06-06 11:39:03
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String), -11(Integer), 35(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 34, 56, user_mq1smvvb1go67m, 1, 2026-06-06 11:39:03
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String), 11(Integer), 34(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: INSERT INTO score_log ( room_id, from_user_id, from_nickname, to_user_id, to_nickname, amount ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String), 好(String), user_mq1smvvb1go67m(String), 2(String), 10(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+2026-06-06 11:39:06.662  INFO 15244 --- [0.0-8080-exec-4] com.poker.service.ScoreService           : 送分: roomId=56, 好 -> 2, amount=10
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==        Row: 67, 56, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:38:58
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, -11, 2026-06-06 11:39:06
+<==        Row: 34, 56, user_mq1smvvb1go67m, 11, 2026-06-06 11:39:06
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, from_user_id, from_nickname, to_user_id, to_nickname, amount, created_at
+<==        Row: 7, 56, user_mpy0z2oj09f9xn, 好, user_mq1smvvb1go67m, 2, 10, 2026-06-06 11:39:06
+<==        Row: 6, 56, user_mpy0z2oj09f9xn, 好, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:39:03
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d] from current transaction
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+2026-06-06 11:39:06.676  INFO 15244 --- [0.0-8080-exec-4] com.poker.service.WebSocketService       : 广播消息 -> 房间56: type=SCORE_TRANSFER, 接收人数=2
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@598a152d]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+JDBC Connection [HikariProxyConnection@379833825 wrapping com.mysql.cj.jdbc.ConnectionImpl@49aa8bfc] will be managed by Spring
+==>  Preparing: SELECT id,room_code,host_user_id,status,current_seat_index,max_seats,room_type,created_at,updated_at FROM room WHERE id=?
+==> Parameters: 56(Long)
+<==    Columns: id, room_code, host_user_id, status, current_seat_index, max_seats, room_type, created_at, updated_at
+<==        Row: 56, 710408, user_mq1smvvb1go67m, 0, 1, 6, SCORE, 2026-06-06 11:38:04, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ? AND user_id = ?)
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, -11, 2026-06-06 11:39:06
+<==        Row: 34, 56, user_mq1smvvb1go67m, 11, 2026-06-06 11:39:06
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 56(Long), user_mpy0z2oj09f9xn(String), 0(Integer), 35(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: UPDATE user_score SET room_id=?, user_id=?, score=? WHERE id=?
+==> Parameters: 56(Long), user_mq1smvvb1go67m(String), 0(Integer), 34(Long)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: DELETE FROM score_log WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Updates: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+2026-06-06 11:39:17.256  INFO 15244 --- [0.0-8080-exec-5] com.poker.service.ScoreService           : 本轮结束: roomId=56, 操作者=user_mq1smvvb1go67m
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,nickname,seat_number,joined_at FROM room_user WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, nickname, seat_number, joined_at
+<==        Row: 66, 56, user_mq1smvvb1go67m, 2, 1, 2026-06-06 11:38:04
+<==        Row: 67, 56, user_mpy0z2oj09f9xn, 好, 2, 2026-06-06 11:38:58
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,card_value,dealt_order,dealt_at FROM user_hand WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: SELECT id,room_id,user_id,score,updated_at FROM user_score WHERE (room_id = ?)
+==> Parameters: 56(Long)
+<==    Columns: id, room_id, user_id, score, updated_at
+<==        Row: 35, 56, user_mpy0z2oj09f9xn, 0, 2026-06-06 11:39:17
+<==        Row: 34, 56, user_mq1smvvb1go67m, 0, 2026-06-06 11:39:17
+<==      Total: 2
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+==>  Preparing: SELECT id,room_id,from_user_id,from_nickname,to_user_id,to_nickname,amount,created_at FROM score_log WHERE (room_id = ?) ORDER BY id DESC
+==> Parameters: 56(Long)
+<==      Total: 0
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16] from current transaction
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+2026-06-06 11:39:17.263  INFO 15244 --- [0.0-8080-exec-5] com.poker.service.WebSocketService       : 广播消息 -> 房间56: type=ROOM_UPDATE, 接收人数=2
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eef9e16]
+2026-06-06 11:39:22.239  INFO 15244 --- [0.0-8080-exec-6] c.p.websocket.WebSocketSessionManager    : WebSocket会话离开房间: roomId=56, sessionId=b99413a0-326e-cc55-242f-0f334ec2cc25
+2026-06-06 11:39:22.240  INFO 15244 --- [0.0-8080-exec-6] c.poker.websocket.PokerWebSocketHandler  : WebSocket连接关闭: sessionId=b99413a0-326e-cc55-242f-0f334ec2cc25, status=CloseStatus[code=1000, reason=null]
+2026-06-06 11:39:34.674  INFO 15244 --- [0.0-8080-exec-7] c.p.websocket.WebSocketSessionManager    : WebSocket会话离开房间: roomId=56, sessionId=8d2ad9e1-9c4a-d602-270e-f9e06cdf6f14
+2026-06-06 11:39:34.676  INFO 15244 --- [0.0-8080-exec-7] c.poker.websocket.PokerWebSocketHandler  : WebSocket连接关闭: sessionId=8d2ad9e1-9c4a-d602-270e-f9e06cdf6f14, status=CloseStatus[code=1000, reason=null]

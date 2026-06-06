@@ -29,11 +29,17 @@ public class RoomVO {
     /** 最大座位数 */
     private Integer maxSeats;
 
+    /** 房间类型：POKER=扑克, SCORE=计分器 */
+    private String roomType;
+
     /** 座位列表 */
     private List<SeatVO> seats;
 
     /** 上次发牌信息（用于弹窗） */
     private DealInfo lastDeal;
+
+    /** 送分日志列表（计分器模块） */
+    private List<ScoreLogVO> scoreLogs;
 
     /** 创建时间 */
     private LocalDateTime createdAt;
@@ -51,6 +57,8 @@ public class RoomVO {
         private String nickname;
         /** 该用户的手牌列表 */
         private List<String> cards;
+        /** 该用户的当前分数（计分器模块） */
+        private Integer score;
     }
 
     /**
@@ -64,5 +72,17 @@ public class RoomVO {
         private String card;
         /** 座位号 */
         private Integer seatNumber;
+    }
+
+    /**
+     * 送分日志视图
+     */
+    @Data
+    public static class ScoreLogVO {
+        private Long id;
+        private String fromNickname;
+        private String toNickname;
+        private Integer amount;
+        private LocalDateTime createdAt;
     }
 }
