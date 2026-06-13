@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "poker-game",
   "description": "扑克房间发牌游戏",
-  "appid": "touristappid",
+  "appid": "wx1234567890abcdef",
   "setting": {
     "urlCheck": false,
     "es6": false,

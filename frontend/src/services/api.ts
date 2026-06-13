@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro';
 import { ApiResult, RoomVO } from '../types';
 
-const BASE_URL = 'http://192.168.21.33:8080';
+const BASE_URL = 'http://123.56.255.222:8080';
 
 async function request<T>(url: string, method: 'GET' | 'POST', data?: any): Promise<ApiResult<T>> {
   try {

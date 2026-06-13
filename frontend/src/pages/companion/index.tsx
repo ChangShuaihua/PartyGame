@@ -80,8 +80,14 @@ export default function CompanionPage() {
         addMessage('bot', '抱歉，我现在有点忙，稍后再聊吧~');
         setBotMood('😴');
       }
-    } catch (e) {
-      addMessage('bot', '网络好像不太对，稍后再试试吧~');
+    } catch (e: any) {
+      console.warn('聊天请求异常:', e);
+      // 检测是否是安全检测API失败（测试号常见问题）
+      if (e?.errMsg?.includes('webapi_getwxaasyncsecinfo')) {
+        addMessage('bot', '消息发送失败，当前环境不支持安全检测，请使用正式小程序账号~');
+      } else {
+        addMessage('bot', '网络好像不太对，稍后再试试吧~');
+      }
       setBotMood('😵');
     } finally {
       setSending(false);
